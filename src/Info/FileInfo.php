@@ -23,11 +23,15 @@ class FileInfo implements Info
             return $this->file['type'] ?? '';
         }
 
+        if (!file_exists($this->file['tmp_name'])) {
+            return $this->file['type'] ?? '';
+        }
+
         $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
         $mimeType = finfo_file($fileInfo, $this->file['tmp_name'] ?? '');
         finfo_close($fileInfo);
 
-        return $mimeType;
+        return $mimeType ?: $this->file['type'] ?? '';
     }
 
     public function getSize(): int
