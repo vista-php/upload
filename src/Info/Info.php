@@ -6,6 +6,8 @@ interface Info
 {
     public function getFilename(): string;
 
+    public function getExtension(): string;
+
     public function getMimeType(): string;
 
     public function getSize(): int;

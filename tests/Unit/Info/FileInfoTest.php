@@ -27,6 +27,11 @@ class FileInfoTest extends TestCase
         $this->assertSame('file.txt', $this->fileInfo->getFilename());
     }
 
+    public function testGetExtension(): void
+    {
+        $this->assertSame('txt', $this->fileInfo->getExtension());
+    }
+
     public function testGetMimeType(): void
     {
         $this->assertSame('text/plain', $this->fileInfo->getMimeType());

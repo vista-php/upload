@@ -41,5 +41,9 @@ interface Uploader
      */
     public function getErrors(): array;
 
+    public function getOriginalFilename(): string;
+
+    public function getOriginalExtension(): string;
+
     public function deleteUploadedFile(string $filePath): bool;
 }
