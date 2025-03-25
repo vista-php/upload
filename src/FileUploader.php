@@ -123,6 +123,16 @@ class FileUploader implements Uploader
         return $this->errors;
     }
 
+    public function getOriginalFilename(): string
+    {
+        return $this->fileInfo->getFileName();
+    }
+
+    public function getOriginalExtension(): string
+    {
+        return $this->fileInfo->getExtension();
+    }
+
     public function deleteUploadedFile(string $filePath): bool
     {
         if ($this->fileSystem->exists($filePath)) {

@@ -276,4 +276,40 @@ class FileUploaderTest extends TestCase
             ],
         ], $uploader->getResults());
     }
+
+    public function testGetOriginalFilename(): void
+    {
+        $info = m::mock(Info::class);
+        $info->shouldReceive('getFilename')->once()
+            ->andReturn('test.jpg');
+        $this->infoFactory->shouldReceive('create')->once()
+            ->with('file')
+            ->andReturn($info);
+
+        $system = m::mock(System::class);
+        $this->systemFactory->shouldReceive('create')->once()
+            ->andReturn($system);
+
+        $uploader = new FileUploader('file', $this->systemFactory, $this->infoFactory);
+
+        $this->assertSame('test.jpg', $uploader->getOriginalFilename());
+    }
+
+    public function testGetOriginalExtension(): void
+    {
+        $info = m::mock(Info::class);
+        $info->shouldReceive('getExtension')->once()
+            ->andReturn('jpg');
+        $this->infoFactory->shouldReceive('create')->once()
+            ->with('file')
+            ->andReturn($info);
+
+        $system = m::mock(System::class);
+        $this->systemFactory->shouldReceive('create')->once()
+            ->andReturn($system);
+
+        $uploader = new FileUploader('file', $this->systemFactory, $this->infoFactory);
+
+        $this->assertSame('jpg', $uploader->getOriginalExtension());
+    }
 }

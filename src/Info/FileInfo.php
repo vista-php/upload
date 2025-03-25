@@ -17,6 +17,11 @@ class FileInfo implements Info
         return $this->file['name'] ?? '';
     }
 
+    public function getExtension(): string
+    {
+        return pathinfo($this->file['name'] ?? '', PATHINFO_EXTENSION);
+    }
+
     public function getMimeType(): string
     {
         if (empty($this->file['tmp_name'])) {
