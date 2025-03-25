@@ -8,7 +8,7 @@ class FileInfo implements Info
      * @param array<string, mixed> $file The $_FILES array.
      */
     public function __construct(
-        private array $file
+        private readonly array $file
     ) {
     }
 
