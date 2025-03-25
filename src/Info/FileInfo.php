@@ -2,13 +2,13 @@
 
 namespace Vista\Upload\Info;
 
-class FileInfo implements Info
+readonly class FileInfo implements Info
 {
     /**
      * @param array<string, mixed> $file The $_FILES array.
      */
     public function __construct(
-        private readonly array $file
+        private array $file
     ) {
     }
 

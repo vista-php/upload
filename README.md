@@ -73,3 +73,12 @@ $success = $uploader->delete(__DIR__ '/path/to/file.jpg'); // returns true or fa
 ]
 
 ```
+- `getOriginalFilename` - Returns the original file name.
+```
+file.txt
+```
+- `getOriginalExtension` - Returns the original file extension.
+
+```
+txt
+```
