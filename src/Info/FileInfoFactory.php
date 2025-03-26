@@ -18,6 +18,6 @@ readonly class FileInfoFactory implements Factory
             return $this->info;
         }
 
-        return new FileInfo($_FILES[$name]);
+        return new FileInfo($_FILES[$name] ?? []);
     }
 }
