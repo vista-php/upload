@@ -344,6 +344,6 @@ class FileUploaderTest extends TestCase
         $uploader = new FileUploader('', $this->systemFactory, $this->infoFactory);
         $uploader->setUploadDir('/tmp');
 
-        $this->assertTrue($uploader->deleteUploadedFile('test.jpg'));
+        $this->assertTrue($uploader->delete('test.jpg'));
     }
 }

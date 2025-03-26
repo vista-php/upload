@@ -45,5 +45,5 @@ interface Uploader
 
     public function getOriginalExtension(): string;
 
-    public function deleteUploadedFile(string $filePath): bool;
+    public function delete(string $filePath): bool;
 }

@@ -133,7 +133,7 @@ class FileUploader implements Uploader
         return $this->fileInfo->getExtension();
     }
 
-    public function deleteUploadedFile(string $filePath): bool
+    public function delete(string $filePath): bool
     {
         if ($this->fileSystem->exists($filePath)) {
             return $this->fileSystem->delete($filePath);
