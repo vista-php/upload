@@ -12,12 +12,12 @@ readonly class FileInfoFactory implements Factory
     /**
      * @param string $name The name of the file input field.
      */
-    public function create(string $name): Info
+    public function create(string $name = ''): Info
     {
         if ($this->info !== null) {
             return $this->info;
         }
 
-        return new FileInfo($_FILES[$name]);
+        return new FileInfo($_FILES[$name] ?? []);
     }
 }
