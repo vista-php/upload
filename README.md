@@ -52,7 +52,7 @@ You can delete files using the `delete` method. It takes the file path as a para
 ```php
 use Vista\Upload\FileUploader;
 
-$uploader = new FileUploader('');
+$uploader = new FileUploader();
 $success = $uploader->delete(__DIR__ '/path/to/file.jpg'); // returns true or false
 ```
 
