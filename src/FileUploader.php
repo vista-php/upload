@@ -27,7 +27,7 @@ class FileUploader implements Uploader
      * @param string $name The name of the file input field.
      */
     public function __construct(
-        string $name,
+        string $name = '',
         SystemFactory $systemFactory = new FileSystemFactory(),
         InfoFactory $infoFactory = new FileInfoFactory()
     ) {

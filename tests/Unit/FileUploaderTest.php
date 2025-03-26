@@ -42,6 +42,17 @@ class FileUploaderTest extends TestCase
         $this->assertInstanceOf(FileUploader::class, $uploader);
     }
 
+    public function testConstructWithNoParameters(): void
+    {
+        $uploader = new FileUploader();
+
+        $this->assertInstanceOf(FileUploader::class, $uploader);
+        $this->assertEmpty($uploader->getOriginalFilename());
+        $this->assertEmpty($uploader->getOriginalExtension());
+        $this->assertEmpty($uploader->getResults());
+        $this->assertEmpty($uploader->getErrors());
+    }
+
     #[TestWith(['validate'])]
     #[TestWith(['upload'])]
     public function testWithFileInfoError(string $method): void
@@ -311,5 +322,28 @@ class FileUploaderTest extends TestCase
         $uploader = new FileUploader('file', $this->systemFactory, $this->infoFactory);
 
         $this->assertSame('jpg', $uploader->getOriginalExtension());
+    }
+
+    public function testDeleteFile(): void
+    {
+        $info = m::mock(Info::class);
+        $this->infoFactory->shouldReceive('create')->once()
+            ->with('')
+            ->andReturn($info);
+
+        $system = m::mock(System::class);
+        $system->shouldReceive('exists')->once()
+            ->with('test.jpg')
+            ->andReturn(true);
+        $system->shouldReceive('delete')->once()
+            ->with('test.jpg')
+            ->andReturn(true);
+        $this->systemFactory->shouldReceive('create')->once()
+            ->andReturn($system);
+
+        $uploader = new FileUploader('', $this->systemFactory, $this->infoFactory);
+        $uploader->setUploadDir('/tmp');
+
+        $this->assertTrue($uploader->deleteUploadedFile('test.jpg'));
     }
 }

@@ -18,7 +18,7 @@ class FileInfoFactoryTest extends TestCase
     public function testCreateNewWithoutFiles(): void
     {
         $factory = new FileInfoFactory();
-        $this->assertInstanceOf(FileInfo::class, $factory->create('file'));
+        $this->assertInstanceOf(FileInfo::class, $factory->create());
     }
 
     public function testCreateWithSystem(): void
